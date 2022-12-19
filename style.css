@@ -18,7 +18,7 @@ body {
     height: 100vh;
 }
 
-body > :is(.commandsPage, .treePage) {
+body > :is(.commandsPage, .treePage,) {
     height: calc(100% - (2 * var(--m)));
     display: flex;
     flex-direction: column;
@@ -29,8 +29,28 @@ body > :is(.commandsPage, .treePage) {
 .commandsPage {
     flex: 1 1 0;
     background: var(--background2);
-    border-right: var(--border);
     align-items: flex-end;
+}
+
+.resizer {
+    padding: 0;
+    width: 1px;
+    background: var(--border-color);
+    position: relative;
+}
+
+.resizer:hover::after {
+    background: var(--text-color);
+}
+
+.resizer::after {
+    position: absolute;
+    left: -3px;
+    width: 8px;
+    height: 100%;
+    cursor: col-resize;
+    content: "";
+    transition: background 0.3s ease-out;
 }
 
 .treePage {
