@@ -1,13 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
 * {
     margin: 0;
     padding: 0;
-    --background1: hsl(18, 3%, 20%);
-    --background2: hsl(18, 4%, 18%);
-    --border-color: hsl(18, 2%, 8%);
+
+    --xs: 8px;
+    --s: 12px;
+    --m: 24px;
+    --l: 32px;
+    --xl: 42px;
+
+    --background1: hsl(18, 4%, 20%);
+    --background2: hsl(18, 4%, 17%);
+    --border-color: hsl(18, 2%, 40%);
+    --border: solid 1px var(--border-color);
+    --text-color: hsl(18, 2%, 85%);
+    --border-text-color: solid 1px var(--text-color);
+    --border-hover-input: solid 2px var(--text-color);
+    --border-selected-input: solid var(--xs) var(--text-color);
+    color: var(--text-color);
+
+    font-family: 'JetBrains Mono', monospace;
+}
+
+h1 {
+    font-size: var(--xl);
+}
+h2 {
+    font-size: var(--l);
 }
 
 body {
     display: flex;
     flex-direction: row;
+    height: 100vh;
+}
+
+body > :is(.leftPanel, .treePage,) {
+    height: calc(100% - (2 * var(--l)));
+    display: flex;
+    flex-direction: column;
+    padding: var(--l);
+}
+
+.leftPanel {
+    width: 25%;
+    background: var(--background2);
+    min-width: 357px;
+    justify-content: space-between;
+}
+
+.leftPanel form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--m);
+    font-size: x-large;
+}
+
+.leftPanel form input[type="text"] {
+    font-size: x-large;
+    background: var(--background1);
+    border: var(--border);
+    border-radius: var(--s);
+    padding: var(--s);
+    width: calc(100% - (var(--s)*2 + 1px * 2));
+    outline: none;
+    transition: box-shadow 0.2s ease-out;
+    transition: -webkit-box-shadow 0.2s ease-out;
+}
+
+.leftPanel form input[type="text"]:hover {
+    -webkit-box-shadow: 0px 0px 0px 2px var(--text-color);
+    box-shadow: 0px 0px 0px 2px var(--text-color);
+}
+
+.leftPanel form input[type="text"]:focus-visible {
+    -webkit-box-shadow: 0px 0px 0px var(--xs) var(--text-color);
+    box-shadow: 0px 0px 0px var(--xs) var(--text-color);
+}
+
+.leftPanel form .radioButton {
+    display: flex;
+    flex-direction: row;
+    gap: var(--s);
+    position: relative;
+    left: var(--xl);
+}
+
+.leftPanel form input[type="radio"] {
+    appearance: none;
+    position: relative;
+    top: 3px;
+    border-radius: 50%;
+    width: var(--m); height: var(--m);
+    border: var(--border-text-color);
+    transition: border 0.25s ease-out;
+}
+
+.leftPanel form input[type="radio"]:hover {
+    transition: none;
+    border: var(--border-hover-input);
+}
+
+.leftPanel form input[type="radio"]:checked {
+    transition: border 0.25s ease-out;
+    border: var(--border-selected-input);
+}
+
+.leftPanel form button[type="button"] {
+    outline: none;
+    font-size: var(--m);
+    padding-top: var(--s); padding-bottom: var(--s);
+    background: var(--background1);
+    border: var(--border);
+    border-radius: var(--s);
+    transition: box-shadow 0.2s ease-out;
+    transition: -webkit-box-shadow 0.2s ease-out;
+}
+
+.leftPanel form button[type="button"]:hover {
+    -webkit-box-shadow: 0px 0px 0px 2px var(--text-color);
+    box-shadow: 0px 0px 0px 2px var(--text-color);
+}
+
+.leftPanel form button[type="button"]:focus-visible {
+    -webkit-box-shadow: 0px 0px 0px var(--xs) var(--text-color);
+    box-shadow: 0px 0px 0px var(--xs) var(--text-color);
+}
+
+.leftPanel .contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.resizer {
+    padding: 0;
+    width: 1px;
+    background: var(--border-color);
+    position: relative;
+    justify-content: center;
+}
+
+.resizer:hover::after {
+    background: var(--text-color);
+}
+
+.resizer::after {
+    position: absolute;
+    left: -3px;
+    width: 8px;
+    height: 100%;
+    cursor: col-resize;
+    content: "";
+    transition: background 0.3s ease-out;
+}
+
+.treePage {
+    flex: 1 1 0;
+    background: var(--background1);
 }
 
