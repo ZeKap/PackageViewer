@@ -8,6 +8,7 @@
     <title>Package Viewer</title>
     <link rel="stylesheet" href="/style.css">
     <script src="/resizer.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -15,8 +16,28 @@
 
 <body>
 
-    <div class="commandsPage">
-        <h1>Hello, World!</h1>
+    <div class="leftPanel">
+        <h1>Package Viewer</h1>
+        <form onsubmit="return false;">
+            <input type="text" name="package" id="package" placeholder="Package to search">
+            <h2>Where:</h2>
+            <div class="radioButton">
+                <input type="radio" name="distribution" id="all" value="all" checked>
+                <label for="all">All</label>
+            </div>
+            <div class="radioButton">
+                <input type="radio" name="distribution" id="Arch" value="arch">
+                <label for="Arch">Arch</label>
+            </div>
+            <div class="radioButton">
+                <input type="radio" name="distribution" id="Fedora" value="fedora">
+                <label for="Fedora">Fedora</label>
+            </div>
+            <button type="button" formaction="">Chercher</button>
+        </form>
+        <div class="contact">
+            <a href="https://github.com/ZeKap/PackageViewer"><i style="font-size:48px" class="fa fa-github"></i></a>
+        </div>
     </div>
 
     <div class="resizer" id="resizer"></div>
